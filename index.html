@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>GDPS World</title>
+    <title id="tit">GDPS World</title>
     <style>
         body {
                     margin: 0;
@@ -19,11 +19,11 @@
                      font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
         }
         
-    </style>
+    </style>    
 </head>
 <body>
     <center>
-        <h1>Upcoming countries for <div style="color: red">GDPS World</div></h1>
+        <h1>Upcoming countries for <div id="contentElement" style="color: red">GDPS World</div></h1>
         <h2>🇫🇷 France</h2>
         <h2>🇺🇸 United States</h2>
         <h2>🇧🇷 Brasil</h2>
@@ -34,5 +34,35 @@
         <h2>🇭🇳 República de Honduras</h2>
         <h2>🇷🇺 Росси́йская Федера́ция</h2>
       </center>    
+      <script>
+        const titleElement = document.getElementById("tit");
+        const contentElement = document.getElementById("contentElement");
+        const languages = [
+          { code: "fr", name: "GDPS Monde" },           // French
+          { code: "en", name: "GDPS World" },          // English
+          { code: "pt-es", name: "GDPS Mundo" },         // Portuguese and Spanish
+          { code: "de", name: "GDPS Welt" },          // German
+          { code: "zu", name: "GDPS IsiHlabangane" },  // Zulu
+          { code: "cs", name: "GDPS Svět" },          // Czech
+          { code: "ar", name: "GDPS العالم" },      // Arabic
+          { code: "es", name: "GDPS Mundo" },         // Spanish
+          { code: "nl", name: "GDPS Wereld" },          // Russian
+          { code: "gr", name: "GDPS Κόσμος" },          // Russian
+          { code: "vn", name: "GDPS Thế giới" },          // Russian
+        ];
+      
+        let currentIndex = 0;
+      
+        function updateTitle() {
+          titleElement.innerText = `${languages[currentIndex].name}`;
+          contentElement.innerHTML = `${languages[currentIndex].name}`;
+          currentIndex = (currentIndex + 1) % languages.length;
+        }
+      
+        // Set the interval (in milliseconds) for title updates
+        const interval = 1000; // ~1 second
+      
+        setInterval(updateTitle, interval);
+      </script>  
 </body>
 </html>
